@@ -1,4 +1,4 @@
-import { UpdateCarDTO } from '@modules/cars/dtos/UpdateCarDto';
+import { UpdateCarDTO } from '@modules/cars/dtos/UpdateCarDTO';
 import {
   Controller,
   Param,
@@ -8,11 +8,11 @@ import {
   Body,
 } from '@nestjs/common';
 
-@Controller('api/v1/cars/:id')
+@Controller('cars/:id')
 export class UpdateCarController {
   @HttpCode(HttpStatus.OK)
   @Put()
-  update(
+  handler(
     @Param('id') carId: string,
     @Body()
     {

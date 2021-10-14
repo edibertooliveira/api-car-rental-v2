@@ -6,11 +6,11 @@ import {
   HttpCode,
 } from '@nestjs/common';
 
-@Controller('api/v1/cars/:id')
+@Controller('cars/:id')
 export class DestroyCarController {
   @HttpCode(HttpStatus.NO_CONTENT)
   @Delete()
-  destroy(@Param('id') carId: string) {
+  handler(@Param('id') carId: string) {
     return [carId];
   }
 }

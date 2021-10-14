@@ -1,11 +1,11 @@
 import { CreateCarDTO } from '@modules/cars/dtos/CreateCarDto';
 import { Controller, Post, HttpStatus, HttpCode, Body } from '@nestjs/common';
 
-@Controller('api/v1/cars')
+@Controller('cars')
 export class CreateCarController {
   @HttpCode(HttpStatus.CREATED)
   @Post()
-  create(
+  handler(
     @Body()
     {
       name,
