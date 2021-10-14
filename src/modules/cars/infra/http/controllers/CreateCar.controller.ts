@@ -15,6 +15,7 @@ import {
 } from '@config/constants/response';
 import { summaryCreate } from '@config/constants/docs';
 import { CreateCarDTO } from '@modules/cars/dtos/CreateCarDTO';
+import { CreateCar } from '@modules/cars/swagger/IndexCar.swagger';
 
 @ApiTags('Cars')
 @ApiBadRequestResponse({
@@ -34,7 +35,9 @@ export class CreateCarController {
   @ApiOperation({
     summary: summaryCreate('cars'),
   })
-  @ApiResponse({})
+  @ApiResponse({
+    type: CreateCar,
+  })
   @HttpCode(HttpStatus.CREATED)
   @Post()
   handler(

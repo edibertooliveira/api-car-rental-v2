@@ -4,6 +4,7 @@ import {
   BAD_REQUEST_RESPONSE,
   conflictResponse,
   NOT_FOUND_RESPONSE,
+  SUCCESS_RESPONSE,
 } from '@config/constants/response';
 import {
   Controller,
@@ -18,12 +19,17 @@ import {
   ApiBody,
   ApiConflictResponse,
   ApiNotFoundResponse,
+  ApiOkResponse,
   ApiOperation,
   ApiResponse,
   ApiTags,
 } from '@nestjs/swagger';
+import { CreateCar } from '@modules/cars/swagger/IndexCar.swagger';
 
 @ApiTags('Cars')
+@ApiOkResponse({
+  description: SUCCESS_RESPONSE,
+})
 @ApiBadRequestResponse({
   description: BAD_REQUEST_RESPONSE,
 })
@@ -41,7 +47,9 @@ export class UpdateCarController {
   @ApiBody({
     type: UpdateCarDTO,
   })
-  @ApiResponse({})
+  @ApiResponse({
+    type: CreateCar,
+  })
   @HttpCode(HttpStatus.OK)
   @Put()
   handler(

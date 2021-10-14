@@ -1,8 +1,21 @@
 import { summaryGetOne } from '@config/constants/docs';
-import { NOT_FOUND_RESPONSE } from '@config/constants/response';
+import {
+  NOT_FOUND_RESPONSE,
+  SUCCESS_RESPONSE,
+} from '@config/constants/response';
+import { IndexCar } from '@modules/cars/swagger/IndexCar.swagger';
 import { Controller, Param, Get, HttpStatus, HttpCode } from '@nestjs/common';
-import { ApiNotFoundResponse, ApiOperation, ApiTags } from '@nestjs/swagger';
+import {
+  ApiNotFoundResponse,
+  ApiResponse,
+  ApiOperation,
+  ApiTags,
+  ApiOkResponse,
+} from '@nestjs/swagger';
 
+@ApiOkResponse({
+  description: SUCCESS_RESPONSE,
+})
 @ApiNotFoundResponse({
   description: NOT_FOUND_RESPONSE,
 })
@@ -11,6 +24,9 @@ import { ApiNotFoundResponse, ApiOperation, ApiTags } from '@nestjs/swagger';
 export class ShowCarController {
   @ApiOperation({
     summary: summaryGetOne('cars'),
+  })
+  @ApiResponse({
+    type: IndexCar,
   })
   @HttpCode(HttpStatus.OK)
   @Get()
