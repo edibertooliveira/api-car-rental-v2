@@ -5,10 +5,18 @@ import {
   HttpStatus,
   HttpCode,
 } from '@nestjs/common';
-import { ApiNotFoundResponse, ApiOperation, ApiTags } from '@nestjs/swagger';
+import {
+  ApiNotFoundResponse,
+  ApiOperation,
+  ApiTags,
+  ApiNoContentResponse,
+} from '@nestjs/swagger';
 import { NOT_FOUND_RESPONSE } from '@config/constants/response';
 import { summaryDelete } from '@config/constants/docs';
 
+@ApiNoContentResponse({
+  description: NOT_FOUND_RESPONSE,
+})
 @ApiNotFoundResponse({
   description: NOT_FOUND_RESPONSE,
 })
