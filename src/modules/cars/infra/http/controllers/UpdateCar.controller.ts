@@ -1,42 +1,37 @@
+import { UpdateCarDTO } from '@modules/cars/dtos/UpdateCarDto';
 import {
   Controller,
-  Get,
-  Post,
+  Param,
+  Put,
   HttpStatus,
   HttpCode,
   Body,
 } from '@nestjs/common';
-import { CreateCarDTO } from 'src/modules/cars/dtos/CreateCarDto';
 
-@Controller('api/v1/cars')
-export class CarsController {
+@Controller('api/v1/cars/:id')
+export class UpdateCarController {
   @HttpCode(HttpStatus.OK)
-  @Get()
-  findAll() {
-    return ['ok'];
-  }
-
-  @HttpCode(HttpStatus.CREATED)
-  @Post()
-  create(
+  @Put()
+  update(
+    @Param('id') carId: string,
     @Body()
     {
       name,
       brand,
       description,
       dailyRate,
-      categoryId,
       available,
+      categoryId,
       licensePlate,
-    }: CreateCarDTO,
+    }: UpdateCarDTO,
   ) {
     return {
       name,
       brand,
       description,
       dailyRate,
-      categoryId,
       available,
+      categoryId,
       licensePlate,
     };
   }
