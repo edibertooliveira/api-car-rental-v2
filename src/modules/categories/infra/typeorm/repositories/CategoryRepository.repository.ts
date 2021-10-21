@@ -1,9 +1,11 @@
 import { CreateCategoryDTO } from '@modules/categories/dtos/CreateCategoryDTO';
 import { ICategoryRepository } from '@modules/categories/repositories/CategoryRepository.interface';
+import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import Category from '../entities/Category.entity';
 
+@Injectable()
 export class CategoryRepository implements ICategoryRepository {
   constructor(
     @InjectRepository(Category)

@@ -1,9 +1,11 @@
 import { CreateCarDTO } from '@modules/cars/dtos/CreateCarDTO';
 import { ICarRepository } from '@modules/cars/repositories/CarRepository.interface.';
+import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import Car from '../entities/Car.entity';
 
+@Injectable()
 export class CarRepository implements ICarRepository {
   constructor(
     @InjectRepository(Car)

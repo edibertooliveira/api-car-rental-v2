@@ -16,6 +16,7 @@ import {
 import { summaryCreate } from '@config/constants/docs';
 import { CreateCarDTO } from '@modules/cars/dtos/CreateCarDTO';
 import { CreateCar } from '@modules/cars/swagger/IndexCar.swagger';
+import { CreateCarService } from '@modules/cars/useCases';
 
 @ApiTags('Cars')
 @ApiBadRequestResponse({
@@ -29,6 +30,7 @@ import { CreateCar } from '@modules/cars/swagger/IndexCar.swagger';
 })
 @Controller('cars')
 export class CreateCarController {
+  constructor(private createCarService: CreateCarService) {}
   @ApiBody({
     type: CreateCarDTO,
   })
@@ -52,7 +54,7 @@ export class CreateCarController {
       licensePlate,
     }: CreateCarDTO,
   ) {
-    return {
+    return this.createCarService.execute({
       name,
       brand,
       description,
@@ -60,6 +62,6 @@ export class CreateCarController {
       categoryId,
       available,
       licensePlate,
-    };
+    });
   }
 }

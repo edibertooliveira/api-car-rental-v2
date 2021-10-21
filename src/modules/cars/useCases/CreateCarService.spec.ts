@@ -49,8 +49,6 @@ describe('CreateCarService', () => {
       available: true,
       licensePlate: `${faker.finance.currencyCode()}-${faker.finance.mask()}`,
     };
-
-    await inMemoryCarRepository.create(carCreateObj);
   });
 
   describe('impossible to create a car', () => {
@@ -73,7 +71,7 @@ describe('CreateCarService', () => {
     test('If key returns "id", "created_at"', async () => {
       const response = await createCarService.execute(carCreateObj);
       expect(response).toHaveProperty('id');
-      expect(response).toHaveProperty('created_at');
+      expect(response).toHaveProperty('createdAt');
     });
   });
 });
