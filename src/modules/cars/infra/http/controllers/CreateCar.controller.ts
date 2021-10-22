@@ -16,7 +16,7 @@ import {
 import { summaryCreate } from '@config/constants/docs';
 import { CreateCarDTO } from '@modules/cars/dtos/CreateCarDTO';
 import { CreateCar } from '@modules/cars/swagger/IndexCar.swagger';
-import { CreateCarService } from '@modules/cars/useCases';
+import CreateCarService from '@modules/cars/useCases/CreateCarService';
 
 @ApiTags('Cars')
 @ApiBadRequestResponse({

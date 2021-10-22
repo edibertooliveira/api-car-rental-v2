@@ -1,10 +1,10 @@
 import Category from '@modules/categories/infra/typeorm/entities/Category.entity';
-import { CategoryRepository } from '@modules/categories/infra/typeorm/repositories/CategoryRepository.repository';
+import { InMemoryCategoryRepository } from '@modules/categories/repositories/in-memory/InMemoryCategoryRepository.repository';
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { CreateCarController } from './infra/http/controllers/CreateCar.controller';
 import Car from './infra/typeorm/entities/Car.entity';
-import { CarRepository } from './infra/typeorm/repositories/CarRepository.repository';
+import { InMemoryCarRepository } from './repositories/in-memory/InMemoryCarRepository.repository';
 import CreateCarService from './useCases/CreateCarService';
 
 @Module({
@@ -12,11 +12,11 @@ import CreateCarService from './useCases/CreateCarService';
   providers: [
     {
       provide: 'CAR_REPOSITORY',
-      useClass: CarRepository,
+      useClass: InMemoryCarRepository,
     },
     {
       provide: 'CATEGORY_REPOSITORY',
-      useClass: CategoryRepository,
+      useClass: InMemoryCategoryRepository,
     },
     CreateCarService,
   ],
